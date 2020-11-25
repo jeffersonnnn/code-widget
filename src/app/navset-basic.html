@@ -1,0 +1,48 @@
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+  <li [ngbNavItem]="1">
+    <a ngbNavLink>cURL</a>
+    <ng-template ngbNavContent>
+      <ngx-prism language="javascript">
+        <ng-content select=".app-code-cURL"></ng-content>
+      </ngx-prism>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="2">
+    <a ngbNavLink>Javascript</a>
+    <ng-template ngbNavContent>
+      <ngx-prism language="html">
+        <ng-content select=".app-code-javascript"></ng-content>
+      </ngx-prism>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="3">
+    <a ngbNavLink>Go</a>
+    <ng-template ngbNavContent>
+      <ngx-prism language="html">
+        <ng-content select=".app-code-go"></ng-content>
+      </ngx-prism>
+    </ng-template>
+  </li>
+</ul>
+
+<div class="d-flex justify-content-end pt-3">
+  <ui-switch [(ngModel)]="enable"></ui-switch>
+</div>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+<div *ngIf="enable && active == 1">
+  <ngx-prism language="html">
+    <ng-content select=".app-cURL-result"></ng-content>
+  </ngx-prism>
+</div>
+<div *ngIf="enable && active == 2">
+  <ngx-prism language="html">
+    <ng-content select=".app-javascript-result"></ng-content>
+  </ngx-prism>
+</div>
+<div *ngIf="enable && active == 3">
+  <ngx-prism language="html">
+    <ng-content select=".app-go-result"></ng-content>
+  </ngx-prism>
+</div>
